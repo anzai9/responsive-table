@@ -1,0 +1,144 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CreditCardTable > should render data expectedly 1`] = `
+<div>
+  <div
+    class="overflow-auto relative my-4 w-full border-2 border-solid border-zinc-300 box-border"
+    data-testid="table-container"
+  >
+    <table
+      class="relative w-full text-sm border-collapse"
+    >
+      <thead>
+        <tr
+          class="group"
+        >
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300 sticky left-0 border-2 border-l-0 after:content-[''] after:absolute after:right-[-2px] after:top-0 after:bottom-0 after:border-l-2 after:border-zinc-300 shadow-md shadow-zinc-300/50 border-t-0"
+          >
+            <div
+              class="p-2 box-border w-40 sm:w-60"
+            >
+              Credit Card
+            </div>
+          </th>
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Recommend Credit Score
+            </div>
+          </th>
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Is business credit card
+            </div>
+          </th>
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Welcome Offer
+            </div>
+          </th>
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Reward Currency
+            </div>
+          </th>
+          <th
+            class="group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-solid border-y-2 text-stone-500 border-zinc-300"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Merchant System
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="group"
+        >
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0 sticky left-0 border-2 border-l-0 after:content-[''] after:absolute after:right-[-2px] after:top-0 after:bottom-0 after:border-l-2 after:border-zinc-300 shadow-md shadow-zinc-300/50"
+          >
+            <div
+              class="p-2 w-40 sm:w-60 box-border"
+            >
+              <img
+                alt="Capital One Venture X Rewards Credit Card Dynamic Page"
+                class="w-48 h-auto aspect-4/3"
+                src="https://s.yimg.com/lo/api/res/1.2/BqLnLQeYGPL8v2po6QHKJg--/YXBwaWQ9ZWNfaG9yaXpvbnRhbDtzcz0x/https://cdn.prodstatic.com/shared/images/cards/401d0150-336c-11ec-b6bf-8d6df3a2e669.png.cf.jpg"
+              />
+              <p
+                class="mt-2"
+              >
+                Capital One Venture X Rewards Credit Card Dynamic Page
+              </p>
+            </div>
+          </td>
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              good
+            </div>
+          </td>
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Yes
+            </div>
+          </td>
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              $200 statement credit after spending $1000 within 90 days
+            </div>
+          </td>
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              N/A
+            </div>
+          </td>
+          <td
+            class="h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0"
+          >
+            <div
+              class="p-2 w-36 sm:w-48 box-border"
+            >
+              Visa
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
