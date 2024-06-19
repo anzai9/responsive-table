@@ -7,6 +7,7 @@ type Column = {
   header: () => React.ReactNode;
   cell: (values: Record<string, string>) => React.ReactNode;
   enableFreeze?: boolean;
+  customStyle?: string;
 };
 
 const DefaultHeader = ({
@@ -16,30 +17,27 @@ const DefaultHeader = ({
   title: string;
   className?: string;
 }) => {
-  return (
-    <div className={cn("p-2 w-36 sm:w-48 box-border", className)}>{title}</div>
-  );
+  return <div className={cn("box-border p-2", className)}>{title}</div>;
 };
 
 const DefaultCell = ({ children }: { children: React.ReactNode }) => {
-  return <div className="p-2 w-36 sm:w-48 box-border">{children}</div>;
+  return <div className="box-border p-2">{children}</div>;
 };
 
 const creditCardColumns: Column[] = [
   {
     key: ["title", "image"],
-    header: () => (
-      <DefaultHeader title="Credit Card" className="w-40 sm:w-60" />
-    ),
+    header: () => <DefaultHeader title="Credit Card" />,
     cell: ({ title, image }) => {
       return (
-        <div className="p-2 w-40 sm:w-60 box-border">
-          <img src={image} alt={title} className="w-48 h-auto aspect-4/3" />
+        <DefaultCell>
+          <img src={image} alt={title} className="aspect-4/3 h-auto w-48" />
           <p className="mt-2">{title}</p>
-        </div>
+        </DefaultCell>
       );
     },
     enableFreeze: true,
+    customStyle: "min-w-48 sm:min-w-60 xl:min-w-72",
   },
   {
     key: ["score"],
@@ -110,18 +108,18 @@ const getCellValues = (creditCard: CreditCard, keys: CreditCardPath[]) => {
 };
 
 const sticky =
-  "sticky left-0 border-2 border-l-0 after:content-[''] after:absolute after:right-[-2px] after:top-0 after:bottom-0 after:border-l-2 after:border-zinc-300 shadow-md shadow-zinc-300/50";
+  "sticky left-0 z-10 outline-2 after:content-[''] after:absolute after:right-[-2px] after:top-0 after:bottom-0 after:border-l-2 after:border-zinc-300 shadow-md shadow-zinc-300/50";
 
 const CreditCardTableBody = () => {
   const { data, error, status } = useCreditCards();
 
   if (status === "pending") {
     return (
-      <tbody>
-        <tr>
+      <tbody className="row-[2_/_span_1] grid auto-rows-fr">
+        <tr className="flex">
           <td
             colSpan={creditCardColumns.length}
-            className="h-12 text-lg text-center border-t-2 border-solid text-bold border-zinc-300"
+            className="text-bold flex h-12 w-full items-center justify-center text-center text-lg"
           >
             Loading...
           </td>
@@ -131,22 +129,24 @@ const CreditCardTableBody = () => {
   }
 
   return (
-    <tbody>
+    <tbody className="row-[2_/_span_1] grid auto-rows-fr">
       {(data?.length ?? 0) > 0 || error ? (
-        data?.map((creditCard, I) => {
+        data?.map((creditCard) => {
           return (
-            <tr key={creditCard.title} className="group">
-              {creditCardColumns.map((column) => {
+            <tr key={creditCard.title} className="flex">
+              {creditCardColumns.map((column, I) => {
                 const key = column.key.join(".") + I;
                 const vals = getCellValues(creditCard, column.key);
                 return (
                   <td
                     key={key}
                     className={cn(
-                      "h-auto text-left bg-white border-solid border-y-2 border-zinc-300 group-last:border-b-0",
+                      "box-border min-w-48 bg-white text-left outline outline-2 outline-zinc-300 xl:min-w-72",
+                      `col-[${I + 1}_/_1]`,
                       {
                         [sticky]: column.enableFreeze,
                       },
+                      column.customStyle,
                     )}
                   >
                     {column.cell({ ...vals })}
@@ -160,7 +160,7 @@ const CreditCardTableBody = () => {
         <tr>
           <td
             colSpan={creditCardColumns.length}
-            className="h-12 text-lg text-center border-t-2 border-solid text-bold border-zinc-300"
+            className="text-bold flex h-12 w-full items-center justify-center text-center text-lg"
           >
             No data
           </td>
@@ -173,23 +173,29 @@ const CreditCardTableBody = () => {
 export const CreditCardTable = () => {
   return (
     <div
-      className="overflow-auto relative my-4 w-full border-2 border-solid border-zinc-300 box-border"
+      className="relative my-4 box-border w-full overflow-auto border-2 border-solid border-zinc-300"
       data-testid="table-container"
     >
-      <table className="relative w-full text-sm border-collapse">
-        <thead>
-          <tr className="group">
-            {creditCardColumns.map((column) => {
+      <table
+        className={cn(
+          "relative grid w-full grid-flow-row auto-rows-[1fr] grid-rows-[auto_1fr] text-sm",
+          `grid-cols-${creditCardColumns?.length ?? 0}fr`,
+        )}
+      >
+        <thead className="row-span-1">
+          <tr className="flex">
+            {creditCardColumns.map((column, I) => {
               const key = column.key.join(".") + "header";
               return (
                 <th
                   key={key}
                   className={cn(
-                    "group-first:border-t-0 z-10 px-2 h-8 font-medium text-left align-middle bg-white border-t-0 border-solid border-y-2 text-stone-500 border-zinc-300",
+                    "box-border flex h-8 min-w-48 items-center bg-white text-left font-medium text-stone-500 outline outline-2 outline-zinc-300 xl:min-w-72",
+                    `col-[${I + 1}_/_1]`,
                     {
                       [sticky]: column.enableFreeze,
-                      "border-t-0": column.enableFreeze,
                     },
+                    column.customStyle,
                   )}
                 >
                   {column.header()}
